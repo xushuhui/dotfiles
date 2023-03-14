@@ -60,8 +60,9 @@ vim.o.timeoutlen = 500
 -- split window 从下边和右边出现
 vim.o.splitbelow = true
 vim.o.splitright = true
--- 自动补全不自动选中
-vim.g.completeopt = "menu,menuone,noselect,noinsert"
+-- 自动补全
+vim.g.completeopt = "menu,menuone"
+
 -- 样式
 vim.o.termguicolors = true
 vim.opt.termguicolors = true

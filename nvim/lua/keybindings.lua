@@ -130,8 +130,8 @@ keymap("n", keys.format, "<cmd>lua vim.lsp.buf.formatting()<CR>")
 -- Esc 回 Normal 模式
 keymap("t", keys.terminal_to_normal, "<C-\\><C-n>")
 -- Terminal相关
--- map("n", "st", ":sp | terminal<CR>", opt)
--- map("n", "stv", ":vsp | terminal<CR>", opt)
+map("n", "st", ":sp | terminal<CR>", opt)
+map("n", "stv", ":vsp | terminal<CR>", opt)
 -- map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
 -- map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
 -- map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)

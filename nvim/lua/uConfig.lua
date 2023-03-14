@@ -10,11 +10,11 @@ local M = {
     c_prev_item = "<C-k>",
 
     -- normal 模式
-    n_save = "<leader>w", -- :w
-    n_save_quit = "<leader>wq", --:wq
-    n_save_all = "<leader>wa", -- :wa
+    n_save = "w", -- :w
+    n_save_quit = "wq", --:wq
+    n_save_all = "wa", -- :wa
     -- n_save_all_quit = "<leader>qa", -- :wqa
-    n_force_quit = "<leader>q", -- :qa!
+    n_force_quit = "q", -- :qa!
 
     n_v_5j = "<C-j>",
     n_v_5k = "<C-k>",
@@ -198,9 +198,9 @@ local M = {
     -- <leader>ta 浮动命令行窗口
     toggle_window_A = "<leader>ta",
     -- <leader>tb 右侧命令行窗口
-    toggle_window_B = "<leader>tb",
+    toggle_window_B = "tr",
     -- <leader>tc 下方命令行窗口
-    toggle_window_C = "<leader>tc",
+    toggle_window_C = "tb",
   },
 
   venn = {
