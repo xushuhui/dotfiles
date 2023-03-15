@@ -61,8 +61,7 @@ vim.o.timeoutlen = 500
 vim.o.splitbelow = true
 vim.o.splitright = true
 -- 自动补全
-vim.g.completeopt = "menu,menuone"
-
+vim.g.completeopt = "menu,noinsert,menuone"
 -- 样式
 vim.o.termguicolors = true
 vim.opt.termguicolors = true

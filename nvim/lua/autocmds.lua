@@ -14,17 +14,24 @@ local autocmd = vim.api.nvim_create_autocmd
 --   group = myAutoGroup,
 --    callback = require("utils.im-select").insertEnter,
 -- })
+-- 保存Fold
+local saveable_type = { "*.go", "*.py", "*.md", "*.lua", "*.js", "*.jsx", "*.ts", "*.tsx" }
 
 -- 进入Terminal 自动进入插入模式
 autocmd("TermOpen", {
   group = myAutoGroup,
   command = "startinsert",
 })
-
+autocmd("VimEnter", {
+  group = myAutoGroup,
+  callback = function()
+    require("nvim-tree.api").tree.open()
+  end,
+})
 -- 保存时自动格式化
 autocmd("BufWritePre", {
   group = myAutoGroup,
-  pattern = { "*.lua", "*.py", "*.sh" },
+  pattern = saveable_type,
   callback = function()
     vim.lsp.buf.format()
   end,
@@ -61,9 +68,6 @@ autocmd("BufEnter", {
       + "r" -- But do continue when pressing enter.
   end,
 })
-
--- 保存Fold
-local saveable_type = { "*.lua", "*.js", "*.jsx", "*.ts", "*.tsx" }
 
 autocmd("BufWinEnter", {
   group = myAutoGroup,

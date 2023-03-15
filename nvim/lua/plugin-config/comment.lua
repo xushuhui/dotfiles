@@ -48,11 +48,11 @@ local opts = {
 }
 
 -- ctrl + /
--- map("n", "<C-->", "gcc", {
+-- keymap("n", "<C-->", "gcc", {
 --   noremap = false,
 -- })
--- map("v", "<C-_>", "gc", {
+-- keymap("v", "<C-_>", "gc", {
 --   noremap = false,
 -- })
-
+--
 comment.setup(opts)

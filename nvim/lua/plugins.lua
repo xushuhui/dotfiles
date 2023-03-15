@@ -177,7 +177,12 @@ packer.startup({
         require("plugin-config.fidget")
       end,
     })
-
+    use({
+      "Pocco81/auto-save.nvim",
+      config = function()
+        require("auto-save").setup({})
+      end,
+    })
     -- todo-comments.nvim
     use({
       "folke/todo-comments.nvim",

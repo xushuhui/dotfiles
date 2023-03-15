@@ -28,7 +28,7 @@ alias cp='cp -r'
 alias ga='git add .'
 alias gm='git commit -m'
 alias gp='git push'
-
+alias b='cd ~'
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end

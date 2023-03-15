@@ -48,10 +48,10 @@ local M = {
       close_others = "so",
 
       -- 窗口跳转
-      jump_left = "<A-h>",
-      jump_right = "<A-l>",
-      jump_up = "<A-k>",
-      jump_down = "<A-j>",
+      jump_left = "<leader>h",
+      jump_right = "<leader>l",
+      jump_up = "<leader>k",
+      jump_down = "<leader>j",
 
       -- <leader> + hjkl 窗口之间跳转
       -- jump_left = "<leader>h",
@@ -83,7 +83,7 @@ local M = {
 
     format = "<leader>f",
 
-    terminal_to_normal = "<Esc>",
+    terminal_to_normal = "<C-c>",
     -- TODO
 
     -- proxy
@@ -93,10 +93,8 @@ local M = {
   enable_magic_search = true,
 
   nvimTree = {
-
     enable = true,
-
-    toggle = "<A-m>",
+    toggle = "<leader>e",
     -- toggle = "<leader>m"
     edit = { "o", "<2-LeftMouse>" },
     system_open = "<CR>",
@@ -110,7 +108,6 @@ local M = {
     toggle_dotfiles = ".",
     -- togglle custom config
     toggle_custom = "u",
-
     refresh = "R",
     -- 文件操作
     create = "a",
@@ -182,16 +179,15 @@ local M = {
     enable = true,
     -- Normal 模式快捷键
     toggler = {
-      line = "gcc", -- 行注释
-      block = "gbc", -- 块注释
+      line = "gc", -- 行注释
+      block = "gcc", -- 块注释
     },
     -- Visual 模式
     opleader = {
-      line = "gc",
-      bock = "gb",
+      line = "gc", -- 行注释
+      block = "gcc", -- 块注释
     },
   },
-
   toggleterm = {
     enable = true,
 

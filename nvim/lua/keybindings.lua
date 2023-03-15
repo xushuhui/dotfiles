@@ -161,10 +161,9 @@ pluginKeys.mapLSP = function(mapbuf)
   --]]
   mapbuf("n", lsp.code_action, "<cmd>lua vim.lsp.buf.code_action()<CR>")
   -- go xx
-  --[[
-    mapbuf('n', 'gd', '<cmd>Lspsaga preview_definition<CR>', opt)
-  mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
-  --]]
+  -- mapbuf("n", "gd", "<cmd>Lspsaga preview_definition<CR>", opt)
+  -- mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
+  -- --]]
 
   mapbuf("n", lsp.definition, function()
     require("telescope.builtin").lsp_definitions({
