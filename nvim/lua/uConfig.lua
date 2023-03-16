@@ -75,14 +75,11 @@ local M = {
       last = "tk",
       close = "tc",
     },
-
     fold = {
       open = "Z",
       close = "zz",
     },
-
     --[[ format = "<leader>f", ]]
-
     terminal_to_normal = "<C-c>",
     -- TODO
 
@@ -131,7 +128,6 @@ local M = {
   bufferLine = {
 
     enable = true,
-
     prev = "<C-h>",
     next = "<C-l>",
     close = "<C-w>",
@@ -180,18 +176,17 @@ local M = {
     enable = true,
     -- Normal 模式快捷键
     toggler = {
-      line = "gc", -- 行注释
-      block = "gcc", -- 块注释
+      line = "//", -- 行注释
+    block = "<leader>/", -- 块注释
     },
     -- Visual 模式
     opleader = {
-      line = "gc", -- 行注释
-      block = "gcc", -- 块注释
+      line = "//", -- 行注释
+     block = "<leader>/", -- 块注释
     },
   },
   toggleterm = {
     enable = true,
-
     -- <leader>ta 浮动命令行窗口
     toggle_window_A = "<leader>ta",
     -- <leader>tb 右侧命令行窗口
@@ -200,14 +195,14 @@ local M = {
     toggle_window_C = "tb",
   },
 
-  venn = {
+  -- venn = {
     -- toggle keymappings for venn using <leader>v
-    enable = true,
+    -- enable = true,
     -- venn.nvim: enable or disable keymappings
-    toggle = "<leader>v",
+    -- toggle = "<leader>v",
     -- draw a box by pressing "f" with visual selection
-    draw_box = "f",
-  },
+  --   draw_box = "f",
+  -- },
 
   zen = {
     enable = true,

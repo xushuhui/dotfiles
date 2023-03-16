@@ -27,7 +27,7 @@ end
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-  vim.notify("Not found packer.nvim")
+  vim.notify("Packer.nvim not found")
   return
 end
 
@@ -82,7 +82,9 @@ packer.startup({
         -- telescope extensions
         { "LinArcX/telescope-env.nvim" },
         { "nvim-telescope/telescope-ui-select.nvim" },
+        { "nvim-telescope/telescope-live-grep-args.nvim" },
       },
+      
       config = function()
         require("plugin-config.telescope")
       end,
@@ -94,6 +96,8 @@ packer.startup({
       config = function()
         require("plugin-config.dashboard")
       end,
+      event = 'VimEnter',
+      requires = {'nvim-tree/nvim-web-devicons'}
     })
 
     -- project
@@ -137,15 +141,6 @@ packer.startup({
         require("plugin-config.toggleterm")
       end,
     })
-
-    -- surround
-    -- use({
-    --   "ur4ltz/surround.nvim",
-    --   config = function()
-    --     require("plugin-config.surround")
-    --   end,
-    -- })
-
     -- nvim-surround
     use({
       "kylechui/nvim-surround",
@@ -153,7 +148,13 @@ packer.startup({
         require("plugin-config.nvim-surround")
       end,
     })
-
+    -- git
+    use {
+      'tanvirtin/vgit.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim'
+      }
+    }
     -- Comment
     use({
       "numToStr/Comment.nvim",
@@ -213,12 +214,12 @@ packer.startup({
     -- })
     --
     -- zen mode
-    use({
-      "folke/zen-mode.nvim",
-      config = function()
-        require("plugin-config.zen-mode")
-      end,
-    })
+    -- use({
+    --   "folke/zen-mode.nvim",
+    --   config = function()
+    --     require("plugin-config.zen-mode")
+    --   end,
+    -- })
     --------------------- LSP --------------------
     -- installer
     use({ "williamboman/mason.nvim" })
@@ -287,12 +288,12 @@ packer.startup({
 
     -------------------------------------------------------
     -- git
-    use({
-      "lewis6991/gitsigns.nvim",
-      config = function()
-        require("plugin-config.gitsigns")
-      end,
-    })
+    -- use({
+    --   "lewis6991/gitsigns.nvim",
+    --   config = function()
+    --     require("plugin-config.gitsigns")
+    --   end,
+    -- })
     -- vimspector
     use({
       "puremourning/vimspector",
@@ -340,11 +341,7 @@ packer.startup({
     end
   end,
   config = {
-    -- 锁定插件版本在snapshots目录
-    snapshot_path = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots"),
-    -- 这里锁定插件版本在v1，不会继续更新插件
-    -- snapshot = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots") .. "/v1",
-    -- snapshot = "v1",
+    
 
     -- 最大并发数
     max_jobs = 10,

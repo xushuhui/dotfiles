@@ -1,13 +1,17 @@
-local status_ok, autosave = pcall(require, "autosave")
-if not status_ok then
-  vim.notify("autosave not found!")
+local status, autoSave = pcall(require, "auto-save")
+if not status then
+  vim.notify("AutoSave not found!")
   return
 end
 
-autosave.setup({
+autoSave.setup({
   enabled = true,
-  -- execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
-  execution_message = "",
+  execution_message = {
+    message = function() -- message to print on save
+      return ("saved at " .. vim.fn.strftime("%H:%M:%S"))
+    end,
+  },
+
   events = { "InsertLeave", "TextChanged" },
   conditions = {
     exists = true,
@@ -18,5 +22,5 @@ autosave.setup({
   write_all_buffers = false,
   on_off_commands = true,
   clean_command_line_interval = 0,
-  debounce_delay = 200,
+  debounce_delay = 1000,
 })

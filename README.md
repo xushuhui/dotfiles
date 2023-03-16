@@ -13,3 +13,5 @@ command + 数字：跳转对应标签页
 command + shift + [ ：切换到上一个标签页
 command + shift + ] ：切换到下一个标签页
 
+https://github.com/BurntSushi/ripgrep
+brew install ripgrep for search

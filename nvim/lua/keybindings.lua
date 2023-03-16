@@ -31,7 +31,7 @@ local opts_expr = {
   expr = true,
   silent = true,
 }
-
+keymap("n", "/", "")
 keymap("i", keys.terminal_to_normal, "<Esc>")
 -- 命令行下 Ctrl+j/k  上一个下一个
 keymap("c", keys.c_next_item, "<C-n>", opts_remap)
@@ -58,12 +58,12 @@ keymap({ "n", "v" }, keys.n_v_5k, "5k")
 
 -- magic search
 if uConfig.enable_magic_search then
-  keymap({ "n", "v" }, "/", "/\\v", {
+  keymap({ "n", "v" }, "f", "/\\v", {
     remap = false,
     silent = false,
   })
 else
-  keymap({ "n", "v" }, "/", "/", {
+  keymap({ "n", "v" }, "f", "/", {
     remap = false,
     silent = false,
   })
@@ -93,6 +93,8 @@ if keys.s_windows ~= nil and keys.s_windows.enable then
   local skey = keys.s_windows
   -- 取消 s 默认功能
   keymap("n", "s", "")
+ 
+
   keymap("n", skey.split_vertically, ":vsp<CR>")
   keymap("n", skey.split_horizontally, ":sp<CR>")
   -- 关闭当前
