@@ -5,7 +5,7 @@ local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 local paccker_bootstrap
 if fn.empty(fn.glob(install_path)) > 0 then
-  vim.notify("正在安装Pakcer.nvim，请稍后...")
+  vim.notify("Pakcer.nvim being installing...")
   paccker_bootstrap = fn.system({
     "git",
     "clone",
@@ -21,13 +21,13 @@ if fn.empty(fn.glob(install_path)) > 0 then
   if not string.find(vim.o.runtimepath, rtp_addition) then
     vim.o.runtimepath = rtp_addition .. "," .. vim.o.runtimepath
   end
-  vim.notify("Pakcer.nvim 安装完毕")
+  vim.notify("Pakcer.nvim install complete")
 end
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-  vim.notify("没有安装 packer.nvim")
+  vim.notify("Not found packer.nvim")
   return
 end
 
@@ -177,12 +177,14 @@ packer.startup({
         require("plugin-config.fidget")
       end,
     })
+    -- autosave
     use({
       "Pocco81/auto-save.nvim",
       config = function()
-        require("auto-save").setup({})
+        require("plugin-config.autosave")
       end,
     })
+
     -- todo-comments.nvim
     use({
       "folke/todo-comments.nvim",
@@ -203,13 +205,13 @@ packer.startup({
     })
 
     -- venn 画图
-    use({
-      "jbyuki/venn.nvim",
-      config = function()
-        require("plugin-config.venn")
-      end,
-    })
-
+    -- use({
+    --   "jbyuki/venn.nvim",
+    --   config = function()
+    --     require("plugin-config.venn")
+    --   end,
+    -- })
+    --
     -- zen mode
     use({
       "folke/zen-mode.nvim",
@@ -255,13 +257,12 @@ packer.startup({
     use("simrat39/rust-tools.nvim")
     --------------------- colorschemes --------------------
     -- tokyonight
-    use({
-      "folke/tokyonight.nvim",
-      config = function()
-        require("plugin-config.tokyonight")
-      end,
-    })
-
+    -- use({
+    --   "folke/tokyonight.nvim",
+    --   config = function()
+    --     require("plugin-config.tokyonight")
+    --   end,
+    -- })
     -- OceanicNext
     -- use({ "mhartington/oceanic-next", event = "VimEnter" })
 
@@ -278,8 +279,9 @@ packer.startup({
     -- use("shaunsingh/nord.nvim")
 
     -- onedark
-    -- use("ful1e5/onedark.nvim")
-
+    --[[ use("ful1e5/onedark.nvim")  ]]
+    -- dracula
+    use("dracula/vim")
     -- nightfox
     -- use("EdenEast/nightfox.nvim")
 

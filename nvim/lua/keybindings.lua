@@ -32,6 +32,7 @@ local opts_expr = {
   silent = true,
 }
 
+keymap("i", keys.terminal_to_normal, "<Esc>")
 -- 命令行下 Ctrl+j/k  上一个下一个
 keymap("c", keys.c_next_item, "<C-n>", opts_remap)
 keymap("c", keys.c_prev_item, "<C-p>", opts_remap)

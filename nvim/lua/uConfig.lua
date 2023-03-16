@@ -81,7 +81,7 @@ local M = {
       close = "zz",
     },
 
-    format = "<leader>f",
+    --[[ format = "<leader>f", ]]
 
     terminal_to_normal = "<C-c>",
     -- TODO
@@ -102,6 +102,7 @@ local M = {
     vsplit = "sv",
     -- h分屏打开文件
     split = "sh",
+
     -- toggle .gitignore (git enable)
     toggle_git_ignored = "i",
     -- Hide (dotfiles)

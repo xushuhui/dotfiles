@@ -1,9 +1,7 @@
 local myAutoGroup = vim.api.nvim_create_augroup("myAutoGroup", {
   clear = true,
 })
-
 local autocmd = vim.api.nvim_create_autocmd
-
 -- 自动切换输入法，需要安装 im-select
 -- https://github.com/daipeihust/im-select
 -- autocmd("InsertLeave", {
@@ -15,7 +13,7 @@ local autocmd = vim.api.nvim_create_autocmd
 --    callback = require("utils.im-select").insertEnter,
 -- })
 -- 保存Fold
-local saveable_type = { "*.go", "*.py", "*.md", "*.lua", "*.js", "*.jsx", "*.ts", "*.tsx" }
+local saveable_type = { "*.go", "*.py", "*.lua", "*.js", "*.jsx", "*.ts", "*.tsx" }
 
 -- 进入Terminal 自动进入插入模式
 autocmd("TermOpen", {
