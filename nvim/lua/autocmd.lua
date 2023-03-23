@@ -49,9 +49,14 @@ autocmd('InsertLeave', {
     -- end
   end,
 })
+autocmd("VimEnter", {
+  callback = function()
+    require("nvim-tree.api").tree.open()
+  end,
+})
 -- 修改lua/plugins.lua 自动更新插件
 autocmd("BufWritePost", {
-    group = myAutoGroup,
+   
     -- autocmd BufWritePost plugins.lua source <afile> | PackerSync
     callback = function()
       if vim.fn.expand("<afile>") == "lua/plugin/list.lua" then

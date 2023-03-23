@@ -36,7 +36,7 @@ local buttons = {
   button('c', '  Configuration', ':e $MYVIMRC | :cd %:p:h <CR>'),
   button('q', '  Quit Neovim', ':qa<CR>'),
 }
-local footer = 'itsuki.cn'
+local footer = 'xushuhui.github.io'
 
 -- 布局
 dashboard.section.header.val = header
