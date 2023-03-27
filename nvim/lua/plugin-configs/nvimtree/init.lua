@@ -1,7 +1,6 @@
 local present, nvimtree = pcall(require, "nvim-tree")
 
 if present then
-	require("base46").load_highlight("nvimtree")
 
 	-- 新建当前文件并打开
 	-- 相对路径
@@ -44,7 +43,7 @@ if present then
 		view = {
 			width = 30,
 			hide_root_folder = false,
-			side = "right",
+			side = "left",
 			adaptive_size = true,
 			number = false,
 			relativenumber = false,

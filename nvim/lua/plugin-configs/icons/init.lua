@@ -1,7 +1,6 @@
 local present, icons = pcall(require, 'nvim-web-devicons')
 
 if present then
-  require('base46').load_highlight('devicons')
   icons.setup({
     override = {
       default_icon = {

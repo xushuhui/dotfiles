@@ -34,4 +34,3 @@ end
 -- This is useful for choice nodes (introduced in the forthcoming episode 2)
 
 
-vim.keymap.set('n', '<leader><leader>s', '<cmd>source ~/.config/nvim/lua/plugin-configs/luasnip<CR>')

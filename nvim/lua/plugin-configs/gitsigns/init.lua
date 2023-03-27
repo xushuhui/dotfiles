@@ -1,7 +1,6 @@
 local present, gitsigns = pcall(require, 'gitsigns')
 
 if present then
-  require('base46').load_highlight('git')
   gitsigns.setup({
     signs = {
       add = { hl = 'DiffAdd', text = '│', numhl = 'GitSignsAddNr' },

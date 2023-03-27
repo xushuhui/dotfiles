@@ -8,14 +8,14 @@ autoSave.setup({
   enabled = true,
   execution_message = {
     message = function() -- message to print on save
-      return ("saved at " .. vim.fn.strftime("%H:%M:%S"))
+      return "";
     end,
   },
 
   events = { "InsertLeave", "TextChanged" },
   conditions = {
     exists = true,
-    filename_is_not = { "plugins.lua" },
+    filename_is_not = {  },
     filetype_is_not = {},
     modifiable = true,
   },

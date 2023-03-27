@@ -15,11 +15,21 @@
       vim.keymap.set(mode, key, command, vim.tbl_extend("force", default_opts, opts))
   end
 
-  _G.bufmap = function(bufnr, mode, key, command, opts)
-    local options = { noremap = true, silent = true }
-    if opts then
-      options = skcode.merge(options, opts)
-    end
-    vim.api.nvim_buf_set_keymap(bufnr, mode, key, command, options)
+  _G.bufmap = function(bufnr, mode, key, command)
+    local options = { noremap = true, silent = true,buffer = bufnr }
+    vim.keymap.set( mode, key, command, options)
   end
-  
+
+
+  _G.hasPlugin=function(plugin)
+    return require("lazy.core.config").plugins[plugin] ~= nil
+  end
+
+  _G.setOpts=function(name)
+    local plugin = require("lazy.core.config").plugins[name]
+    if not plugin then
+      return {}
+    end
+    local Plugin = require("lazy.core.plugin")
+    return Plugin.values(plugin, "opts", false)
+  end

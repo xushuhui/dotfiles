@@ -1,6 +1,7 @@
 local present, alpha = pcall(require, 'alpha')
 
 if not present then
+  vim.notify("no found")
   return
 end
 
@@ -33,8 +34,10 @@ local buttons = {
   button('e', '  New file', ':ene <BAR> startinsert <CR>'),
   button('r', '  Recently used files', ':Telescope oldfiles <CR>'),
   button('F', '  Find text', ':Telescope live_grep <CR>'),
+  button('l', '  Recently lastest session',':RestoreSession <CR>'),
   button('c', '  Configuration', ':e $MYVIMRC | :cd %:p:h <CR>'),
   button('q', '  Quit Neovim', ':qa<CR>'),
+ 
 }
 local footer = 'xushuhui.github.io'
 
@@ -47,5 +50,4 @@ dashboard.section.footer.val = footer
 dashboard.section.footer.opts.hl = 'AlphaType'
 dashboard.section.header.opts.hl = 'AlphaHeader'
 
-require('base46').load_highlight('alpha')
 alpha.setup(dashboard.opts)

@@ -18,7 +18,6 @@ local swap_next, swap_prev = (function()
 end)()
 
 if present then
-  require('base46').load_highlight('treesitter')
   treesitter.setup({
     ensure_installed = { "json", "vim", "lua", "go", "java", "markdown" },
     sync_install = false,

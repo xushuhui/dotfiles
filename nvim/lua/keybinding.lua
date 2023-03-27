@@ -42,12 +42,8 @@ M.comment = function()
 end
 
 M.init = function()
-	keymap({ "i", "n", "v" }, "<Down>", "")
-	keymap({ "i", "n", "v" }, "<Right>", "")
-	keymap({ "i", "n", "v" }, "<Left>", "")
-	keymap({ "i", "n", "v" }, "<Up>", "")
+	
 	keymap("i", "<C-c>", "<Esc>")
-
 	-- 命令行下 Ctrl+j/k  上一个下一个
 	keymap("c", "<C-j>", "<C-n>", opts_remap)
 	keymap("c", "<C-k>", "<C-p>", opts_remap)
@@ -111,19 +107,20 @@ M.init = function()
 	keymap("n", "<leader>rn", '<cmd>lua require("ui.renamer").open()<cr>')
 	keymap("v", "<leader>rn", '<cmd>lua require("ui.renamer").open()<cr>')
 	keymap("n", "<leader>rt", ':lua require("plenary.test_harness").test_directory(vim.fn.expand("%:p"))<CR>')
+
 end
 
 M.lspconfig = function(bufnr)
-	bufmap(bufnr, "n", "gi", '<cmd>lua require("telescope.builtin").lsp_implementations()<cr>')
-	bufmap(bufnr, "n", "gt", '<cmd>lua require("telescope.builtin").lsp_type_definitions()<cr>')
-	bufmap(bufnr, "n", "gr", '<cmd>lua require("telescope.builtin").lsp_references()<cr>')
-	bufmap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-	bufmap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-	bufmap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-	bufmap(bufnr, "n", "<leader>ca", "<cmd>CodeActionMenu <CR>")
-	bufmap(bufnr, "n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>')
-	bufmap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
-	bufmap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
+	-- bufmap(bufnr, "n", "gi", '<cmd>lua require("telescope.builtin").lsp_implementations()<cr>')
+	-- bufmap(bufnr, "n", "gt", '<cmd>lua require("telescope.builtin").lsp_type_definitions()<cr>')
+	-- bufmap(bufnr, "n", "gr", '<cmd>lua require("telescope.builtin").lsp_references()<cr>')
+	-- bufmap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+	-- bufmap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+	-- bufmap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+	 bufmap(bufnr, "n", "ca", "<cmd>CodeActionMenu <CR>")
+	-- bufmap(bufnr, "n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>')
+	-- bufmap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
+	-- bufmap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
 end
 
 M.gitsigns = function()
@@ -162,7 +159,16 @@ M.floaterm = function()
 	-- vim.g.floaterm_keykeymap_toggle = '<C-z>'
 	keymap("n", "<leader>f", ":FloatermToggle --autoclose=2<CR>")
 end
+M.dapconfig = function ()  
+	keymap({"i", "n", "v"}, "<F1>", "<cmd>lua require'dap'.continue()<CR>")
+	keymap({"i", "n", "v"}, "<F2>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
 
+	keymap({"i", "n", "v"}, "<F3>", "<cmd>lua require'dap'.step_over()<CR>")
+	keymap({"i", "n", "v"}, "<F4>", "<cmd>lua require'dap'.step_into()<CR>")
+	keymap({"i", "n", "v"}, "<F5>", "<cmd>lua require'dap'.step_out()<CR>")
+	
+	
+end
 M.markdown_preview = function()
 	keymap("n", "<leader>mp", ":MarkdownPreview <CR>")
 	keymap("n", "<leader>ms", ":MarkdownPreviewStop <CR>")
