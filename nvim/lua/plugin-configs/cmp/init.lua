@@ -27,21 +27,19 @@ if present then
 		},
 		mapping = ({
 			["<C-k>"] = cmp.mapping({
-				i = cmp.select_prev_item(),
-				c = cmp.select_prev_item(),
+				i = cmp.mapping.select_prev_item(),
+				c = cmp.mapping.select_prev_item(),
 			}),
 			["<C-j>"] =cmp.mapping({ 
-				i = cmp.select_next_item(),
-				c = cmp.select_next_item(),
+				i = cmp.mapping.select_next_item(),
+				c = cmp.mapping.select_next_item(),
 			}),
 	
 			["<C-c>"] = cmp.mapping({
-				i = cmp.abort(),
-				c = cmp.close(),
+				i = cmp.mapping.abort(),
+				c = cmp.mapping.close(),
 			}),
-			['<CR>'] = cmp.mapping.confirm({ 
-				select = true 
-			}),
+			['<CR>'] =  cmp.mapping(cmp.mapping.complete()),
 			-- ["<C-y>"] = cmp.mapping.complete(),
 			-- ["<C-y>"] = cmp.mapping(
 			-- 	cmp.mapping.confirm({
