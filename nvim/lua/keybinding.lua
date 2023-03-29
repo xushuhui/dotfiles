@@ -155,11 +155,8 @@ M.todo_comments = function()
 	keymap("n", "<leader>ts", ":TodoTelescope<CR>")
 end
 
-M.floaterm = function()
-	-- vim.g.floaterm_keykeymap_toggle = '<C-z>'
-	keymap("n", "<leader>f", ":FloatermToggle --autoclose=2<CR>")
-end
-M.dapconfig = function ()  
+
+M.dap = function ()  
 	keymap({"i", "n", "v"}, "<F1>", "<cmd>lua require'dap'.continue()<CR>")
 	keymap({"i", "n", "v"}, "<F2>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
 

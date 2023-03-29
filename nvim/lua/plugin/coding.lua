@@ -8,9 +8,10 @@ return {
     config = function()
       require('plugin-configs.dap')
     end,
+    keys =  require('keybinding').dap,
   },
-    
-    {"rcarriga/nvim-dap-ui",},
+  
+  --   {"rcarriga/nvim-dap-ui",},
 
   {"theHamsta/nvim-dap-virtual-text",},
   {
