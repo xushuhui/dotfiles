@@ -39,7 +39,13 @@ if present then
 				i = cmp.mapping.abort(),
 				c = cmp.mapping.close(),
 			}),
-			['<CR>'] =  cmp.mapping(cmp.mapping.complete()),
+			['<CR>'] =  cmp.mapping({
+				 	i = cmp.mapping.confirm({
+							behavior = cmp.ConfirmBehavior.Insert,
+							select = true,
+						}),
+				
+		}),
 			-- ["<C-y>"] = cmp.mapping.complete(),
 			-- ["<C-y>"] = cmp.mapping(
 			-- 	cmp.mapping.confirm({
@@ -72,6 +78,7 @@ if present then
 			{ name = "luasnip" },
 			{ name = "nvim_lua" },
 			{ name = "path" },
+			{name = "friendly-snippets"}
 		},
 
 		sorting = {

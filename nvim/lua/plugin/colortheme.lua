@@ -3,12 +3,13 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = true,
-  
-    init = function ()
-      pcall(vim.cmd, "colorscheme " .. "tokyonight")
-     end
+   
   },
-
+  {'echasnovski/mini.nvim', version = false,
+  init = function ()
+    vim.cmd.colorscheme("minischeme")
+  end 
+},
 
 
 }

@@ -23,13 +23,7 @@ return {
             require('keybinding').bufferline()
         end,
     },
-    {
-        'lukas-reineke/indent-blankline.nvim',
-        event = 'BufRead',
-        config = function()
-            require('plugin-configs.blankline')
-        end,
-    },
+
     {
         'goolord/alpha-nvim',
         event = 'VimEnter',
@@ -39,4 +33,13 @@ return {
     },
     { 'nvim-lua/plenary.nvim',       lazy = true },
     { 'nvim-tree/nvim-web-devicons', lazy = true },
+    
+    { 'echasnovski/mini.statusline', version = false,config = function ()
+        require('mini.statusline').setup({
+              use_icons = true,
+              set_vim_settings = true,
+    })
+    end },
+   -- { 'echasnovski/mini.indentscope', version = false },
+    
 }

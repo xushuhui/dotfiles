@@ -47,6 +47,7 @@ return {
         require('plugin-configs.toggleterm')
       end,
     },
+
       {
         'nvim-treesitter/nvim-treesitter-textobjects',
         event = 'BufRead',

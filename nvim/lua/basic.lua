@@ -87,6 +87,7 @@ vim.opt.numberwidth = 2 -- 行号宽度: 2
 vim.opt.signcolumn = 'yes' -- 始终显示符号列，否则每次都会移动文本
 
 vim.opt.laststatus = 3 -- global statusline
-vim.opt.statusline = "%!v:lua.require('ui.statusline').run()"
+
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+
 
