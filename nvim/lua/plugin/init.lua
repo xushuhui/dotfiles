@@ -15,13 +15,12 @@ vim.opt.rtp:prepend(lazypath)
 
 local options = {}
 require('lazy').setup({
- 
+
   require("plugin.colortheme"),
   require('plugin.editor'),
-  
+
   require('plugin.ui'),
   require('plugin.coding'),
-
   {
     'lewis6991/gitsigns.nvim',
     event = 'BufRead',

@@ -5,7 +5,7 @@ vim.opt.fileencoding = "utf-8"
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 -- 右侧参考线，超过表示代码太长了，考虑换行
-vim.wo.colorcolumn = "80"
+vim.wo.colorcolumn = "100"
 -- 缩进4个空格等于一个Tab
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

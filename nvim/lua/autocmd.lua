@@ -79,14 +79,14 @@ autocmd('LspAttach', {
     keymap("n", "<leader>r", "<cmd>Lspsaga rename<CR>")
     -- Rename all occurrences of the hovered word for the selected files
     keymap("n", "<leader>rr", "<cmd>Lspsaga rename ++project<CR>")
-    keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
+    keymap("n", "gdd", "<cmd>Lspsaga peek_definition<CR>")
     -- Go to definition
-    keymap("n","gdd", "<cmd>Lspsaga goto_definition<CR>")
+    keymap("n","gd", "<cmd>Lspsaga goto_definition<CR>")
     keymap("n","go", "<cmd>Lspsaga outline<CR>")
-    keymap("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
+    keymap("n", "gtt", "<cmd>Lspsaga peek_type_definition<CR>")
   
     -- Go to type definition
-    keymap("n","gtt", "<cmd>Lspsaga goto_type_definition<CR>")
+    keymap("n","gt", "<cmd>Lspsaga goto_type_definition<CR>")
     keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
    
     keymap('n', 'gr',"<cmd>Telescope lsp_references<cr>", opts)

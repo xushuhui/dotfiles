@@ -27,9 +27,6 @@ M.telescope = function()
 	keymap("n", "<C-p>", ":Telescope find_files <CR>")
 	keymap("n", "<C-f>", ":Telescope live_grep <CR>")
 
-	keymap("n", "<leader>sb", ":Telescope buffers <CR>")
-	keymap("n", "<leader>sk", ":Telescope keykeymaps <CR>")
-	keymap("n", "<leader>sc", ":Telescope commands <CR>")
 end
 M.bufferline = function()
 	keymap("n", "<TAB>", ":BufferLineCycleNext <CR>")
@@ -69,8 +66,8 @@ M.init = function()
 	-- keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", opts_expr)
 
 	-- -- visual模式下缩进代码
-	-- keymap("v", "<", "<gv")
-	-- keymap("v", ">", ">gv")
+	keymap("v", "<", "<gv")
+	keymap("v", ">", ">gv")
 
 	-- -- 上下移动选中文本
 	-- keymap("x", "J", ":move '>+1<CR>gv-gv")
@@ -88,25 +85,20 @@ M.init = function()
 	keymap("n", "<C-d>", "<C-d>zz")
 	keymap("n", "<C-u>", "<C-u>zz")
 
-	keymap("n", "<M-Up>", ":resize +2<CR>")
-	keymap("n", "<M-Down>", ":resize -2<CR>")
-	keymap("n", "<M-Left>", ":vertical resize -2<CR>")
-	keymap("n", "<M-Right>", ":vertical resize +2<CR>")
+	keymap("n", "<A-Up>", ":resize +2<CR>")
+	keymap("n", "<A-Down>", ":resize -2<CR>")
+	keymap("n", "<A-Left>", ":vertical resize -2<CR>")
+	keymap("n", "<A-Right>", ":vertical resize +2<CR>")
 
-	keymap("", "<Space>", "<Nop>")
-	keymap("n", "<leader>x", ":lua skcode.close_buffer() <CR>")
+
+	keymap("n", '<S-h>', "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+	keymap("n", '<S-l>', "<cmd>bnext<cr>", { desc = "Next buffer" })
 
 	keymap("n", "<space><cr>", "<cmd>noh<CR>")
 
-	keymap("v", "<", "<gv")
-	keymap("v", ">", ">gv")
 
 	-- keymap('v', '<A-j>', ':m .+1<CR>==')
 	-- keymap('v', '<A-k>', ':m .-2<CR>==')
-
-	keymap("n", "<leader>rn", '<cmd>lua require("ui.renamer").open()<cr>')
-	keymap("v", "<leader>rn", '<cmd>lua require("ui.renamer").open()<cr>')
-	keymap("n", "<leader>rt", ':lua require("plenary.test_harness").test_directory(vim.fn.expand("%:p"))<CR>')
 
 end
 

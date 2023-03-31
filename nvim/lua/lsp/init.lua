@@ -1,98 +1,42 @@
-
 local status, mason = pcall(require, "mason")
 if not status then
-    vim.notify("没有找到 mason")
-    return
+  vim.notify("没有找到 mason")
+  return
 end
 
 local status, mason_config = pcall(require, "mason-lspconfig")
 if not status then
-    vim.notify("没有找到 mason-lspconfig")
-    return
+  vim.notify("没有找到 mason-lspconfig")
+  return
 end
 
 local status, lspconfig = pcall(require, "lspconfig")
 if not status then
-    vim.notify("没有找到 lspconfig")
-    return
+  vim.notify("没有找到 lspconfig")
+  return
 end
 
 -- :h mason-default-settings
 -- ~/.local/share/nvim/mason
 mason.setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗",
-        },
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗",
     },
+  },
 })
-
+local servers = { 'clangd', 'lua_ls', 'yamlls', 'gopls' }
 -- mason-lspconfig uses the `lspconfig` server names in the APIs it exposes - not `mason.nvim` package names
 -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
 mason_config.setup({
-    ensure_installed = {
-        "lua_ls",
-        -- "tsserver",
-      
-        -- "bashls",
-       
-        -- "dockerls",
-        -- "emmet_ls",
-        -- "html",
-        -- "jsonls",
-        -- "pyright",
-        -- "rust_analyzer",
-        -- "taplo",
-        "yamlls",
-        "gopls",
-        -- "clangd",
-        -- "cmake",
-    },
+  ensure_installed = servers,
 })
-
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-lspconfig.gopls.setup({
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
     capabilities = capabilities,
-})
-lspconfig.lua_ls.setup({
-    capabilities = capabilities,
-   
-})
-
-
--- 安装列表
--- { key: 服务器名， value: 配置文件 }
--- key 必须为下列网址列出的 server name，不可以随便写
--- https://github.com/williamboman/nvim-lsp-installer#available-lsps
--- local servers = {
---   sumneko_lua = require("lsp.language.lua"), -- lua/lsp/config/lua.lua
---   bashls = require("lsp.language.bash"),
---   pyright = require("lsp.language.pyright"),
---   html = require("lsp.language.html"),
---   cssls = require("lsp.language.css"),
---   emmet_ls = require("lsp.language.emmet"),
---   jsonls = require("lsp.language.json"),
---   tsserver = require("lsp.language.typescript"),
---   yamlls = require("lsp.language.yamlls"),
---   dockerls = require("lsp.language.docker"),
---   tailwindcss = require("lsp.language.tailwindcss"),
---   rust_analyzer = require("lsp.language.rust"),
---   taplo = require("lsp.language.taplo"), -- toml
---   gopls = require("lsp.language.gopls"),
---   remark_ls = require("lsp.language.markdown"),
---   clangd = require("lsp.language.clangd"),
---   cmake = require("lsp.language.cmake"),
--- }
-
--- for name, config in pairs(servers) do
---   if config ~= nil and type(config) == "table" then
---     -- 自定义初始化配置文件必须实现on_setup 方法
---     config.on_setup(lspconfig[name])
---   else
---     -- 使用默认参数
---     lspconfig[name].setup({})
---   end
--- end
+  }
+end

@@ -60,31 +60,19 @@ return {
   },
 
   -- 自动补全括号
-  {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    dependencies = 'hrsh7th/nvim-cmp',
-    config = function()
-      require('plugin-configs.autopairs')
-    end,
-  },
+  -- {
+  --   'windwp/nvim-autopairs',
+  --   event = 'InsertEnter',
+  --   dependencies = 'hrsh7th/nvim-cmp',
+  --   config = function()
+  --     require('plugin-configs.autopairs')
+  --   end,
+  -- },
   -- 格式化
   { "jose-elias-alvarez/null-ls.nvim" },
 
   -- 注释
-  {
-    'numToStr/Comment.nvim',
-    event = 'VeryLazy',
-    dependencies = {
-      'JoosepAlviste/nvim-ts-context-commentstring',
-    },
-    config = function()
-      require('plugin-configs.comment')
-    end,
-    init = function()
-      require('keybinding').comment()
-    end,
-  },
+
   -- 快速建议修复
   { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' },
 }
