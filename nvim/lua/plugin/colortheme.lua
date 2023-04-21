@@ -11,7 +11,7 @@ return {
       require('plugin-configs.mini')
     end,
     init = function()
-      vim.cmd.colorscheme("minischeme")
+      vim.cmd.colorscheme("tokyonight")
     end
   },
 

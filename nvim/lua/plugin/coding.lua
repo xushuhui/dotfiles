@@ -56,6 +56,7 @@ return {
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
       "hrsh7th/cmp-nvim-lsp-signature-help",
+      "lukas-reineke/cmp-rg",
     },
   },
 
@@ -69,8 +70,16 @@ return {
   --   end,
   -- },
   -- 格式化
-  { "jose-elias-alvarez/null-ls.nvim" },
+  -- { "jose-elias-alvarez/null-ls.nvim" },
 
+  {
+    "simrat39/symbols-outline.nvim",
+    lazy = true,
+    cmd = { "SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose" },
+    config = function()
+      require('plugin-configs.symbols_outline')
+    end,
+  },
   -- 注释
 
   -- 快速建议修复
