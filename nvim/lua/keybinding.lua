@@ -13,6 +13,7 @@
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
 local opts_remap = {
   noremap = true,
   silent = true,
@@ -40,8 +41,8 @@ end
 M.init = function()
   keymap("i", "<C-c>", "<Esc>")
   -- 命令行下 Ctrl+j/k  上一个下一个
-  keymap("c", "<C-j>", "<C-n>", opts_remap)
-  keymap("c", "<C-k>", "<C-p>", opts_remap)
+  keymap("c", "<Down>", "<C-n>", opts_remap)
+  keymap("c", "<Up>", "<C-p>", opts_remap)
 
   keymap({ "n", "v" }, "<bs>", "caw")
 

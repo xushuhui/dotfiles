@@ -27,7 +27,7 @@ mason.setup({
     },
   },
 })
-local servers = { 'tsserver', 'clangd', 'lua_ls', 'gopls', 'bufls' }
+local servers = { 'tsserver', 'clangd', 'lua_ls', 'gopls', 'bufls', 'rust_analyzer' }
 -- mason-lspconfig uses the `lspconfig` server names in the APIs it exposes - not `mason.nvim` package names
 -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
 mason_config.setup({

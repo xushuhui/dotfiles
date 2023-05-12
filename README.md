@@ -6,11 +6,11 @@ command+delete：删除一行
 command+f：搜索关键字
 command + ←：跳到行首
 conmand + →：跳到行尾
-
 command + t：新开标签页
 command + w: 关闭标签页
 command + 数字：跳转对应标签页
 command + shift + [ ：切换到上一个标签页
+
 command + shift + ] ：切换到下一个标签页
 
 https://github.com/BurntSushi/ripgrep
