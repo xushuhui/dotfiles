@@ -2,34 +2,39 @@ return {
   -- lsp
   {
     "williamboman/mason.nvim",
-    build = ":MasonUpdate"
-  },
-  {
-    "glepnir/lspsaga.nvim",
-    event = "LspAttach",
+    build = ":MasonUpdate",
     config = function()
-      require("lspsaga").setup({})
-    end,
-  },
-  { "williamboman/mason-lspconfig.nvim" },
-  {
-    "mfussenegger/nvim-dap",
-    config = function()
-      require('plugin-configs.dap')
-    end,
-    keys = require('keybinding').dap,
+      require('lsp')
+    end
   },
 
-  --   {"rcarriga/nvim-dap-ui",},
-
-  { "theHamsta/nvim-dap-virtual-text", },
+  { "williamboman/mason-lspconfig.nvim"
+  },
   {
     'neovim/nvim-lspconfig',
     event = { "BufReadPre", "BufNewFile" },
-    opts = require('lsp.config').opts,
+  },
+ 
+  {
+    "mfussenegger/nvim-dap",
     config = function()
-      require('lsp')
+    
+      require('plugin-configs.dap')
     end,
+    keys = require('keymap').dap,
+  },
+
+  { "rcarriga/nvim-dap-ui", },
+
+  { "theHamsta/nvim-dap-virtual-text", },
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+    config = function ()
+      require("mason-nvim-dap").setup({
+        ensure_installed = {  "delve" },
+      
+      })
+    end
   },
   -- 片段
   {
@@ -43,7 +48,8 @@ return {
   -- 自动完成
   {
     'hrsh7th/nvim-cmp',
-    event = 'VeryLazy',
+    -- event = 'VeryLazy',
+    event = "InsertEnter",
     config = function()
       require('plugin-configs.cmp')
     end,
@@ -57,31 +63,33 @@ return {
       'hrsh7th/cmp-cmdline',
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "lukas-reineke/cmp-rg",
+      "f3fora/cmp-spell",
+      "rafamadriz/friendly-snippets"
     },
+    opts = { history = true, updateevents = "TextChanged,TextChangedI" },
   },
 
-  -- 自动补全括号
   -- {
-  --   'windwp/nvim-autopairs',
-  --   event = 'InsertEnter',
-  --   dependencies = 'hrsh7th/nvim-cmp',
+  --   "crispgm/nvim-go",
+  --   build = ":GoInstallBinaries",
   --   config = function()
-  --     require('plugin-configs.autopairs')
-  --   end,
+  --     require('go').setup({
+  --       -- linters: revive, errcheck, staticcheck, golangci-lint
+  --       linter = 'errcheck',
+  --       formatter = 'gofumpt',
+
+  --     })
+  --   end
   -- },
-  -- 格式化
-  -- { "jose-elias-alvarez/null-ls.nvim" },
-
+  -- git
   {
-    "simrat39/symbols-outline.nvim",
-    lazy = true,
-    cmd = { "SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose" },
+    'lewis6991/gitsigns.nvim',
+    event = 'BufRead',
     config = function()
-      require('plugin-configs.symbols_outline')
+      require('plugin-configs.gitsigns')
     end,
+    keys = require('keymap').gitsigns
   },
-  -- 注释
-
   -- 快速建议修复
   { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' },
 }

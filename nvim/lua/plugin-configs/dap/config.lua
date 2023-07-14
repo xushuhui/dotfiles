@@ -1,12 +1,9 @@
 local status, dap = pcall(require, "dap")
 if not status then
+  vim.notify("dap not found!")
   return
 end
 
-local dap_status, dapui = pcall(require, "dapui")
-if not dap_status then
-  return
-end
 
 local M = {}
 
@@ -27,7 +24,7 @@ M.keyAttach = function()
   keymap("n", "<leader>dT", dap.clear_breakpoints())
 
   -- 弹窗
-  keymap("n", "<leader>dh", dapui.eval())
+  -- keymap("n", "<leader>dh", dapui.eval())
   -- nnoremap <silent> <Leader>dr <Cmd>lua require'dap'.repl.open()<CR>
 
   -- 结束

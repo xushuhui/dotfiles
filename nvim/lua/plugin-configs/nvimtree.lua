@@ -1,7 +1,6 @@
 local present, nvimtree = pcall(require, "nvim-tree")
 
 if present then
-
 	-- 新建当前文件并打开
 	-- 相对路径
 	require("nvim-tree.events").on_file_created(function(file)
@@ -12,23 +11,6 @@ if present then
 		vim.cmd("edit " .. vim.fn.fnamemodify(file.fname, ":p"))
 	end)
 
-	local lib = require("nvim-tree.lib")
-
-	local git_add = function()
-		local node = lib.get_node_at_cursor()
-		local gs = node.git_status
-
-		-- If the file is untracked, unstaged or partially staged, we stage it
-		if gs == "??" or gs == "MM" or gs == "AM" or gs == " M" then
-			vim.cmd("silent !git add " .. node.absolute_path)
-
-		-- If the file is staged, we unstage
-		elseif gs == "M " or gs == "A " then
-			vim.cmd("silent !git restore --staged " .. node.absolute_path)
-		end
-
-		lib.refresh_tree()
-	end
 
 	nvimtree.setup({
 		disable_netrw = true,
@@ -52,10 +34,10 @@ if present then
 				list = {
 					{ key = { "sv" }, action = "vsplit" }, --分屏
 					{ key = { "sh" }, action = "split" }, --分屏
-					{ key = { "I" }, action = "toggle_file_info" },
-					{ key = { "t" }, action = "tabnew" },
-					{ key = { "[" }, action = "dir_up" },
-					{ key = { "]" }, action = "cd" },
+					{ key = { "I" },  action = "toggle_file_info" },
+					{ key = { "t" },  action = "tabnew" },
+					{ key = { "[" },  action = "dir_up" },
+					{ key = { "]" },  action = "cd" },
 
 					-- refresh = "R",
 					-- tabnew = "t",

@@ -40,7 +40,7 @@ if present then
       enable = false,
     },
     on_attach = function()
-      require('keybinding').gitsigns()
+      
     end,
   })
 end
