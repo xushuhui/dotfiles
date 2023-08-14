@@ -1,7 +1,5 @@
-local present, icons = pcall(require, 'nvim-web-devicons')
 
-if present then
-  icons.setup({
+  require('nvim-web-devicons').setup({
     override = {
       default_icon = {
         icon = '',
@@ -117,4 +115,4 @@ if present then
       },
     },
   })
-end
+

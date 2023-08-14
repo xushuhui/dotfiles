@@ -27,8 +27,29 @@ mason.setup({
     },
   },
 })
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  -- 在输入模式下也更新提示，设置为 true 也许会影响性能
+  update_in_insert = true,
+})
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+local lsp_defaults = lspconfig.util.default_config
+local capabilities = vim.tbl_deep_extend(
+  'force',
+  lsp_defaults.capabilities,
+  require('cmp_nvim_lsp').default_capabilities()
+)
+
 local servers = { 'tsserver', 'clangd', 'lua_ls', 'gopls', 'bufls', 'rust_analyzer' }
+mason_config.setup({
+  ensure_installed = servers,
+})
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     capabilities = capabilities,
@@ -36,12 +57,13 @@ for _, lsp in ipairs(servers) do
 end
 -- mason-lspconfig uses the `lspconfig` server names in the APIs it exposes - not `mason.nvim` package names
 -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
-mason_config.setup({
-  ensure_installed = servers,
-})
 
+util = require "lspconfig/util"
 lspconfig.gopls.setup {
   capabilities = capabilities,
+  cmd = {"gopls", "serve"},
+  filetypes = {"go", "gomod"},
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gofumpt = true,
     codelenses = {

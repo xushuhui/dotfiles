@@ -3,9 +3,9 @@ return {
 	-- 目录树
 	{
 		"nvim-tree/nvim-tree.lua",
-		cmd = { 'NvimTreeToggle', 'NvimTreeFocus' },
+		cmd = { 'NvimTreeToggle', 'NvimTreeFocus','NvimTreeFindFile' },
 		config = function()
-			require("nvim-tree").setup()
+			require('plugin-configs.nvimtree')
 		end,
 		keys = require("keymap").nvimtree
 	},

@@ -1,17 +1,7 @@
 local present, nvimtree = pcall(require, "nvim-tree")
 
 if present then
-	-- 新建当前文件并打开
-	-- 相对路径
-	require("nvim-tree.events").on_file_created(function(file)
-		vim.cmd("edit " .. file.fname)
-	end)
-	-- 绝对路径
-	require("nvim-tree.events").on_file_created(function(file)
-		vim.cmd("edit " .. vim.fn.fnamemodify(file.fname, ":p"))
-	end)
-
-
+	
 	nvimtree.setup({
 		disable_netrw = true,
 		hijack_netrw = true,
@@ -29,20 +19,7 @@ if present then
 			adaptive_size = true,
 			number = false,
 			relativenumber = false,
-			mappings = {
-				custom_only = false,
-				list = {
-					{ key = { "sv" }, action = "vsplit" }, --分屏
-					{ key = { "sh" }, action = "split" }, --分屏
-					{ key = { "I" },  action = "toggle_file_info" },
-					{ key = { "t" },  action = "tabnew" },
-					{ key = { "[" },  action = "dir_up" },
-					{ key = { "]" },  action = "cd" },
-
-					-- refresh = "R",
-					-- tabnew = "t",
-				},
-			},
+			
 		},
 		actions = {
 			open_file = {

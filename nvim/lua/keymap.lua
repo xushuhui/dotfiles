@@ -21,15 +21,16 @@ local opts_remap = {
 local M = {}
 
 M.general = {
-	{ "<C-s>",   "<cmd> w <CR>",              "n", desc = "Save file" },
+	{ "<C-s>",   "<cmd> w <CR>",              "i", desc = "Save file" },
 	{ "<bs>",    "caw",                       "n" },
 	{ ";",       ":",                         "n" },
+	{ "<C-c>",       "<esc>",                         "i" },
 	-- -- save && quit
 	{ "w",       ":w<CR>",                    "n" },
-	{ "q",       ":qa!<CR>",                  "n" },
+	{ "qa",       ":q!<CR>",                  "n" },
 	{ "wa",      ":wa<CR>",                   "n" },
 	{ "wq",      ":wqa<CR>",                  "n" },
-
+	{ "q",   ":bdelete <CR> :bnext <CR>", "n" },
 	-- -- 上下滚动浏览
 	{ "<C-j>",   "5j",                        "n" },
 	{ "<C-k>",   "5k",                        "n" },
@@ -37,8 +38,8 @@ M.general = {
 	{ "<C-u>",   "10k",                       "n" },
 	{ "<TAB>",   ":bnext <CR>",               "n" },
 	{ "<S-TAB>", ":bprevious <CR>",           "n" },
-	{ "<S-x>",   ":bdelete <CR> :bnext <CR>", "n" },
-
+	{ "<Esc>", "<C-\\><C-n>","t"},
+	{"p","\"0p","n"}
 	-- -- visual模式下缩进代码
 	-- keymap("v", "<", "<gv"),
 	-- keymap("v", ">", ">gv"),
@@ -85,6 +86,7 @@ M.lsp = {
 
 	{ 'gD',        vim.lsp.buf.declaration },
 	{ 'gd',        vim.lsp.buf.definition },
+	
 	{ "gs",        "<cmd>Lspsaga show_line_diagnostics<cr>", },
 	{ 'K',         "<cmd>Lspsaga hover_doc<cr>" },
 	{ 'gi',        vim.lsp.buf.implementation },

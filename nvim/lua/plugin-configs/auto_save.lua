@@ -1,10 +1,6 @@
-local present, autoSave = pcall(require, "auto-save")
-if not present then
-	vim.notify("AutoSave not found!")
-	return
-end
 
-autoSave.setup({
+
+require("auto-save").setup({
 	enabled = true,
 	execution_message = {
 		message = function() -- message to print on save
