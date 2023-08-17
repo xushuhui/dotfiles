@@ -1,4 +1,3 @@
-
 local has_words_before = function()
 	unpack = unpack or table.unpack
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -16,11 +15,13 @@ cmp_window.info = function(self)
 	return info
 end
 local select_opts = { behavior = cmp.SelectBehavior.Select }
-local luasnip = require("luasnip")
 
 cmp.setup({
+	experimental = {
+		ghost_text = true,
+	  },
 	completion = {
-		completeopt = "menu,menuone",
+		completeopt = "menu,menuone,noinsert",
 	},
 	snippet = {
 		expand = function(args)
@@ -31,25 +32,35 @@ cmp.setup({
 		documentation = cmp.config.window.bordered()
 	},
 	mapping = ({
-		["<Up>"] = cmp.mapping.select_prev_item(),
-		["<Down>"] = cmp.mapping.select_next_item(),
+		-- ["<Up>"] = cmp.mapping.select_prev_item(select_opts),
+		-- ["<Down>"] = cmp.mapping.select_next_item(select_opts),
 		["<C-c>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
 		}),
 
-		["<CR>"] = cmp.mapping.confirm { select = true },
-		["<Tab>"] = cmp.mapping(function(fallback)
+		["<CR>"] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		}),
+		["<C-j>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.select_next_item()
+				cmp.select_next_item(select_opts)
 			elseif luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
-			elseif has_words_before() then
-				cmp.complete()
 			else
 				fallback()
 			end
-		end, { "i", "s" }),
+		end, { "i", "c" }),
+		["<C-k>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item(select_opts)
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "c" }),
 		-- ["<C-y>"] = cmp.mapping.complete(),
 		-- ["<C-y>"] = cmp.mapping(
 		-- 	cmp.mapping.confirm({
@@ -62,7 +73,6 @@ cmp.setup({
 	}),
 	formatting = {
 		format = function(entry, vim_item)
-
 			vim_item.menu = ({
 				buffer = "[Buf]",
 				nvim_lsp = "[Lsp]",
@@ -70,7 +80,7 @@ cmp.setup({
 				path = "[Path]",
 				luasnip = "[Snip]",
 			})[entry.source.name]
-			
+
 			return vim_item
 		end,
 	},
@@ -80,7 +90,6 @@ cmp.setup({
 		{ name = 'nvim_lsp' },
 		{ name = 'buffer' },
 		{ name = 'luasnip' },
-		
 		{
 			name = 'spell',
 			option = {

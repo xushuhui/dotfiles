@@ -3,9 +3,7 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = false, 
-    init = function()
-      vim.cmd.colorscheme("tokyonight")
-    end,
+    
     opts = {
       transparent = true,
       style = "night",
@@ -17,6 +15,13 @@ return {
       },
   },
   },
+ {
+  'Mofiqul/dracula.nvim',
+  lazy = false,
+  init = function()
+    vim.cmd.colorscheme("dracula")
+  end,
+ },
   {
     'echasnovski/mini.nvim',
     version = false,

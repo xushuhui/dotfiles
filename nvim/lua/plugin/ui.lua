@@ -13,13 +13,15 @@ return {
       require('plugin-configs.nvimnotify')
     end,
   },
-
+  {
+    "folke/trouble.nvim",
+  },
   { 'nvim-lua/plenary.nvim' },
   { 'nvim-tree/nvim-web-devicons' },
   {
     'kkharji/lspsaga.nvim',
     config = function()
-      require('lsp.ui')
+      require('plugin-configs.lspsaga')
     end
   }
 }

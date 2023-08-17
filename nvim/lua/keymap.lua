@@ -22,28 +22,32 @@ local M = {}
 
 M.general = {
 	{ "<C-s>",   "<cmd> w <CR>",              "i", desc = "Save file" },
-	{ "<bs>",    "caw",                       "n" },
+	{ "c",    "caw",                       "n" },
 	{ ";",       ":",                         "n" },
-	{ "<C-c>",       "<esc>",                         "i" },
+	
 	-- -- save && quit
-	{ "w",       ":w<CR>",                    "n" },
-	{ "qa",       ":q!<CR>",                  "n" },
-	{ "wa",      ":wa<CR>",                   "n" },
-	{ "wq",      ":wqa<CR>",                  "n" },
-	{ "q",   ":bdelete <CR> :bnext <CR>", "n" },
+
+	{ "qa",      ":q!<CR>",                   "n" },
+	
+	{ "q",       ":bdelete <CR> :bnext <CR>", "n" },
 	-- -- 上下滚动浏览
 	{ "<C-j>",   "5j",                        "n" },
 	{ "<C-k>",   "5k",                        "n" },
 	{ "<C-d>",   "10j",                       "n" },
 	{ "<C-u>",   "10k",                       "n" },
-	{ "<TAB>",   ":bnext <CR>",               "n" },
-	{ "<S-TAB>", ":bprevious <CR>",           "n" },
-	{ "<Esc>", "<C-\\><C-n>","t"},
-	{"p","\"0p","n"}
+	{ "<S-l>",   ":bnext <CR>",               "n" },
+	{ "<S-h>", ":bprevious <CR>",           "n" },
+	{ "<Esc>",   "<C-\\><C-n>",               "t" },
+	-- { "p",       "\"0p",                      "n" },
+	-- -- stay in normal mode after inserting a new line
+	-- { "o",       "o <Bs><Esc>",               "n" },
+	-- { "O",       "O <Bs><Esc>",               "n" },
+	-- { 'U',       '<C-r>', "n"  },
+	-- { '<C-r>',   '<NOP>' , "n" },
+	{ "<C-c>",   "<Esc>",                     "i" },
 	-- -- visual模式下缩进代码
 	-- keymap("v", "<", "<gv"),
 	-- keymap("v", ">", ">gv"),
-
 
 	-- 在visual mode 里粘贴不要复制
 	-- keymap("x", "p", '"_dP'),
@@ -55,12 +59,13 @@ M.general = {
 M.toggleterm = {
 
 	{ "<leader>t", ":ToggleTerm <CR>" },
-	{ '<Esc>',     "<C-\\><C-n>",        't' },
+	{ '<Esc>',     "<C-\\><C-n>",       't' },
 
-	{ '<C-h>',     "<Cmd>wincmd h<CR>", 't' },
-	{ '<C-j>',     "<Cmd>wincmd j<CR>", 't' },
-	{ '<C-k>',     "<Cmd>wincmd k<CR>", 't' },
-	{ '<C-l>',     "<Cmd>wincmd l<CR>", 't' },
+	-- { '<C-h>',     "<Cmd>wincmd h<CR>", 't' },
+	-- { '<C-j>',     "<Cmd>wincmd j<CR>", 't' },
+	-- { '<C-k>',     "<Cmd>wincmd k<CR>", 't' },
+	-- { '<C-l>',     "<Cmd>wincmd l<CR>", 't' },
+
 	-- { '<C-w>',     '<C-\><C-n><C-w>',   't' }
 }
 M.dap = {
@@ -69,8 +74,8 @@ M.dap = {
 	{ "<F3>", "<cmd>lua require'dap'.step_over()<CR>",         { "i", "n", "v" } },
 	{ "<F3>", "<cmd>lua require'dap'.step_into()<CR>",         { "i", "n", "v" } },
 	{ "<F4>", "<cmd>lua require'dap'.step_out()<CR>",          { "i", "n", "v" } },
-	{ "<F5>", "<cmd>lua require'dap'.terminate()<CR>",          { "i", "n", "v" } },
-	
+	{ "<F5>", "<cmd>lua require'dap'.terminate()<CR>",         { "i", "n", "v" } },
+
 }
 M.lsp = {
 
@@ -86,11 +91,11 @@ M.lsp = {
 
 	{ 'gD',        vim.lsp.buf.declaration },
 	{ 'gd',        vim.lsp.buf.definition },
-	
+
 	{ "gs",        "<cmd>Lspsaga show_line_diagnostics<cr>", },
 	{ 'K',         "<cmd>Lspsaga hover_doc<cr>" },
 	{ 'gi',        vim.lsp.buf.implementation },
-	{ '<C-k>',     vim.lsp.buf.signature_help },
+	--{ '<C-k>',     vim.lsp.buf.signature_help },
 	{ '<space>wa', vim.lsp.buf.add_workspace_folder },
 	{ '<space>wr', vim.lsp.buf.remove_workspace_folder },
 

@@ -4,7 +4,7 @@ require('mini.fuzzy').setup()
 require('mini.statusline').setup()
 require('mini.tabline').setup()
 require('mini.cursorword').setup()
-require('mini.indentscope').setup()
+-- require('mini.indentscope').setup()
 require('mini.move').setup()
 require('mini.comment').setup()
 require('mini.sessions').setup({
@@ -26,4 +26,8 @@ require('mini.basics').setup({
 	},
 })
 require('mini.files').setup()
-
+--  require('mini.completion').setup({
+-- 	  lsp_completion = {
+-- 		source_func = 'omnifunc',
+-- 	  },
+--  })-- 

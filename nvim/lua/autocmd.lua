@@ -9,7 +9,6 @@ autocmd('FileType', {
 	end,
 })
 
-
 autocmd('TextYankPost', {
 	callback = function()
 		vim.highlight.on_yank({ higroup = 'IncSearch' })
@@ -17,6 +16,7 @@ autocmd('TextYankPost', {
 	group = highlight_group,
 	pattern = '*',
 })
+
 autocmd('TextChanged', {
 	callback = function()
 		vim.highlight.on_yank({ higroup = 'IncSearch' })
@@ -32,8 +32,8 @@ autocmd('BufUnload', {
 })
 
 --autocmd('BufEnter', {
-	-- pattern = '*',
-	-- command = 'set fo-=c fo-=r fo-=o',
+-- pattern = '*',
+-- command = 'set fo-=c fo-=r fo-=o',
 --})
 -- 保存时自动格式化
 autocmd("BufWritePre", {
@@ -42,30 +42,28 @@ autocmd("BufWritePre", {
 		vim.lsp.buf.format()
 	end,
 })
-autocmd({"QuitPre"}, {
-    callback = function() 
-		vim.cmd("NvimTreeClose") 
+autocmd({ "QuitPre" }, {
+	callback = function()
+		vim.cmd("NvimTreeClose")
 	end,
 })
 --
 autocmd('InsertLeave', {
-	
+
 	callback = function()
-		
+
 	end,
 })
 autocmd("BufReadPost", {
 	callback = function()
-		
+
 	end,
 
 })
 local function open_nvim_tree(data)
-
 	-- buffer is a directory
 	-- require("nvim-tree.api").tree.focus()
 	require("nvim-tree.api").tree.toggle({ focus = false })
-	
 end
 autocmd("VimEnter", {
 	callback = open_nvim_tree,
@@ -73,7 +71,7 @@ autocmd("VimEnter", {
 
 autocmd("BufWritePost", {
 	callback = function()
-		
+
 	end,
 })
 autocmd('LspAttach', {
@@ -81,12 +79,12 @@ autocmd('LspAttach', {
 	callback = function(ev)
 		-- Enable completion triggered by <c-x><c-o>
 		vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-		
+
 		-- keymap("gd", vim.lsp.buf.definition,'n',opts)
 		-- bufmap(ev.buf,'n',"gd", vim.lsp.buf.definition)
 		keys = require('keymap')
 		for i, v in ipairs(keys.lsp) do
-			bufmap(ev.buf,v[1], v[2], v[3])
+			bufmap(ev.buf, v[1], v[2], v[3])
 		end
 	end,
 })

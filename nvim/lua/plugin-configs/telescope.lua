@@ -96,7 +96,6 @@ telescope.setup({
 
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
-
 				["<esc>"] = actions.close,
 				["<C-[>"] = actions.close,
 
@@ -154,10 +153,8 @@ telescope.setup({
 	},
 })
 
-local extensions = { "themes", "terms", "notify","dap" }
+local extensions = {   "notify", "dap" }
 
-pcall(function()
-	for _, ext in ipairs(extensions) do
-		telescope.load_extension(ext)
-	end
-end)
+for _, ext in ipairs(extensions) do
+	telescope.load_extension(ext)
+end
