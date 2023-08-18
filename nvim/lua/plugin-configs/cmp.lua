@@ -43,7 +43,7 @@ cmp.setup({
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = true,
 		}),
-		["<C-j>"] = cmp.mapping(function(fallback)
+		["<Down>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item(select_opts)
 			elseif luasnip.expand_or_jumpable() then
@@ -52,7 +52,7 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "c" }),
-		["<C-k>"] = cmp.mapping(function(fallback)
+		["<Up>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item(select_opts)
 			elseif luasnip.jumpable(-1) then
