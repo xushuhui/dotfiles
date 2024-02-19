@@ -1,0 +1,8 @@
+[
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      ";": "command_palette::Toggle"
+    }
+  }
+]
