@@ -1,22 +1,5 @@
-# pure theme
-# 可以将原来的>修改成你喜欢的表情图案，比如我设置的是🏂
-set --universal  pure_symbol_prompt 🏂
-# 假如不喜欢上下行的方式，可以将命令行输入和当前文件夹放一行
-set --universal pure_enable_single_line_prompt true
-set --universal pure_show_subsecond_command_duration false
-set --universal pure_threshold_command_duration 1000
-set -xg https_proxy http://127.0.0.1:7890 
-set -xg http_proxy http://127.0.0.1:7890
-set -xg all_proxy socks5://127.0.0.1:7890
-# path 
-set -xg JAVA_HOME /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
-
-set -xg PATH /opt/go/bin /Users/xsh/go $JAVA_HOME/bin /opt/homebrew/bin $PATH
-set -xg HOMEBREW_BREW_GIT_REMOTE https://mirrors.ustc.edu.cn/brew.git
-# alias 
 alias ls='ls --color=auto'
 alias la='ls -a'
-alias g='git'
 alias ll='ls -l'
 alias lh='ls -lh'
 alias ld='ls -ld'
@@ -24,13 +7,22 @@ alias l='ll'
 alias v='nvim'
 alias bs='brew search'
 alias bi='brew install'
-alias bs='brew uninstall'
+alias bu='brew uninstall'
 alias cp='cp -r'
+alias lg='lazygit'
 alias gac='git add . && git commit -m'
 alias gc='git commit -m'
 alias ga='git add .'
 alias gp='git push'
 alias b='cd ~'
+alias gfw='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
+alias pg='ps aux | grep $1'
+
+[ -f /usr/local/share/autojump/autojump.fish ]
+function fish_prompt -d "Write out the prompt"
+printf '%s%s%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
+end
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+set -U fish_greeting
+
 end
